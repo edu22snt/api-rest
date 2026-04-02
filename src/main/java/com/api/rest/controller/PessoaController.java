@@ -29,7 +29,7 @@ public class PessoaController {
     }
 
     @GetMapping("/{id}")
-    public Optional<PessoaDTO> findById(@PathVariable Long id) throws URISyntaxException {
+    public Optional<PessoaDTO> findById(@PathVariable Long id) {
          Optional<PessoaDTO> pessoaDTO = service.findOne(id);
         return pessoaDTO;
     }
@@ -37,6 +37,12 @@ public class PessoaController {
     @GetMapping()
     public ResponseEntity<Page<PessoaDTO>> findAll(Pageable pageable) {
         return ResponseEntity.ok(service.findAll(pageable));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

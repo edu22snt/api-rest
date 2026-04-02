@@ -44,4 +44,8 @@ public class PessoaService {
         return pessoaRepository.findAll(pageable).map(PessoaMapper::entityToDto);
     }
 
+    public void delete(Long id) {
+        log.debug("Request to delete Pessoa by id : {}", id);
+        pessoaRepository.deleteById(id);
+    }
 }
