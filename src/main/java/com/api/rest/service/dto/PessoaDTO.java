@@ -1,47 +1,31 @@
-package com.api.rest.model;
+package com.api.rest.service.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
-@Entity
-@Table(name = "pessoa")
-public class Pessoa implements Serializable {
+public class PessoaDTO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CD_PESSOA")
     private Long id;
 
-    @Column(name = "TX_NOME")
+    @Size(max = 255, min = 5, message = "O nome deve ter entre 5 e 255 caracteres")
+    @NotBlank(message = "O Nome é obrigatório")
     private String nome;
 
-    @Column(name = "NU_TELEFONE")
+    @NotBlank(message = "O número de telefone é obrigatório")
     private Number numTelefone;
 
-    @Column(name = "TX_CPF")
+    @NotBlank(message = "O número de cpf é obrigatório")
     private String cpf;
 
-    @Column(name = "TX_BLOCO")
+    @NotBlank(message = "O número do bloco é obrigatório")
     private String bloco;
 
-    @Column(name = "TX_APARTAMENTO")
+    @NotBlank(message = "O número do apartamento é obrigatório")
     private String apartamento;
 
-    @Column(name = "NU_ATIVO")
     private Number ativo;
-
-    public Pessoa() {}
-
-    public Pessoa(Long id,  String nome, Number numTelefone, String cpf, String bloco, String apartamento, Number ativo) {
-        this.id = id;
-        this.nome = nome;
-        this.numTelefone = numTelefone;
-        this.cpf = cpf;
-        this.bloco = bloco;
-        this.apartamento = apartamento;
-        this.ativo = ativo;
-    }
 
     public Long getId() {
         return id;
@@ -89,13 +73,5 @@ public class Pessoa implements Serializable {
 
     public void setApartamento(String apartamento) {
         this.apartamento = apartamento;
-    }
-
-    public Number isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Number ativo) {
-        this.ativo = ativo;
     }
 }
