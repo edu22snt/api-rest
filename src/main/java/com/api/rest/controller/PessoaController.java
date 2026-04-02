@@ -45,4 +45,10 @@ public class PessoaController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<PessoaDTO> update(@RequestBody PessoaDTO pessoaDTO) {
+        PessoaDTO result = service.update(pessoaDTO);
+        return ResponseEntity.ok().body(result);
+    }
+
 }

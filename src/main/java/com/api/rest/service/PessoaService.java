@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -47,5 +48,12 @@ public class PessoaService {
     public void delete(Long id) {
         log.debug("Request to delete Pessoa by id : {}", id);
         pessoaRepository.deleteById(id);
+    }
+
+    public PessoaDTO update(PessoaDTO pessoaDTO) {
+        log.debug("Request to update pessoaDTO: {}", pessoaDTO);
+        Pessoa pessoa = pessoaMapper.dtoToEntity(pessoaDTO);
+        pessoa = pessoaRepository.save(pessoa);
+        return pessoaMapper.entityToDto(pessoa);
     }
 }
