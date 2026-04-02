@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pessoa")
@@ -24,18 +25,11 @@ public class PessoaController {
         return ResponseEntity.created(new URI("/api/save/" + result.getId())).body(pessoaDTO);
     }
 
-//    public ResponseEntity<>
+    @GetMapping("/{id}")
+    public Optional<PessoaDTO> findById(@PathVariable Long id) throws URISyntaxException {
+         Optional<PessoaDTO> pessoaDTO = service.findOne(id);
+        return pessoaDTO;
 
-//    @PostMapping("/delete")
-//    public ResponseEntity<Void> delete() {
-//
-//    }
-//
-//    @PostMapping("/update/{id}")
-//    public ResponseEntity<Void> update(@PathVariable(value = "id", required = false) final Long id, @RequestBody PessoaDTO pessoaDTO) {
-//
-//    }
-
-
+    }
 
 }

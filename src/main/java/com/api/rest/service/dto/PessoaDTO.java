@@ -14,7 +14,7 @@ public class PessoaDTO implements Serializable {
     private String nome;
 
     @NotBlank(message = "O número de telefone é obrigatório")
-    private Number numTelefone;
+    private String numTelefone;
 
     @NotBlank(message = "O número de cpf é obrigatório")
     private String cpf;
@@ -25,7 +25,7 @@ public class PessoaDTO implements Serializable {
     @NotBlank(message = "O número do apartamento é obrigatório")
     private String apartamento;
 
-    private Number ativo;
+    private Integer ativo;
 
     public Long getId() {
         return id;
@@ -43,11 +43,11 @@ public class PessoaDTO implements Serializable {
         this.nome = nome;
     }
 
-    public Number getNumTelefone() {
+    public String getNumTelefone() {
         return numTelefone;
     }
 
-    public void setNumTelefone(Number numTelefone) {
+    public void setNumTelefone(String numTelefone) {
         this.numTelefone = numTelefone;
     }
 
@@ -73,5 +73,13 @@ public class PessoaDTO implements Serializable {
 
     public void setApartamento(String apartamento) {
         this.apartamento = apartamento;
+    }
+
+    public Integer getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Integer ativo) {
+        this.ativo = ativo;
     }
 }

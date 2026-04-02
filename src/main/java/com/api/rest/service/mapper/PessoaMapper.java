@@ -1,8 +1,10 @@
 package com.api.rest.service.mapper;
 
+import org.springframework.stereotype.Component;
 import com.api.rest.model.Pessoa;
 import com.api.rest.service.dto.PessoaDTO;
 
+@Component
 public class PessoaMapper {
 
     public static Pessoa dtoToEntity(PessoaDTO pessoaDTO) {
@@ -14,6 +16,8 @@ public class PessoaMapper {
         pessoa.setCpf(pessoaDTO.getCpf());
         pessoa.setBloco(pessoaDTO.getBloco());
         pessoa.setApartamento(pessoaDTO.getApartamento());
+        pessoa.setAtivo(pessoaDTO.getAtivo());
+
         return pessoa;
     }
 
@@ -26,6 +30,8 @@ public class PessoaMapper {
         pessoaDTO.setCpf(pessoa.getCpf());
         pessoaDTO.setBloco(pessoa.getBloco());
         pessoaDTO.setApartamento(pessoa.getApartamento());
+        pessoaDTO.setAtivo(pessoa.getAtivo());
+
         return pessoaDTO;
     }
 }

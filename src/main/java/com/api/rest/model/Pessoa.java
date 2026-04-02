@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "pessoa")
+@Table(name = "tb_pessoa")
 public class Pessoa implements Serializable {
 
     @Id
@@ -16,8 +16,8 @@ public class Pessoa implements Serializable {
     @Column(name = "TX_NOME")
     private String nome;
 
-    @Column(name = "NU_TELEFONE")
-    private Number numTelefone;
+    @Column(name = "TX_TELEFONE")
+    private String numTelefone;
 
     @Column(name = "TX_CPF")
     private String cpf;
@@ -29,11 +29,12 @@ public class Pessoa implements Serializable {
     private String apartamento;
 
     @Column(name = "NU_ATIVO")
-    private Number ativo;
+    private Integer ativo;
+
 
     public Pessoa() {}
 
-    public Pessoa(Long id,  String nome, Number numTelefone, String cpf, String bloco, String apartamento, Number ativo) {
+    public Pessoa(Long id,  String nome, String numTelefone, String cpf, String bloco, String apartamento, Integer ativo) {
         this.id = id;
         this.nome = nome;
         this.numTelefone = numTelefone;
@@ -59,11 +60,11 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public Number getNumTelefone() {
+    public String getNumTelefone() {
         return numTelefone;
     }
 
-    public void setNumTelefone(Number numTelefone) {
+    public void setNumTelefone(String numTelefone) {
         this.numTelefone = numTelefone;
     }
 
@@ -91,11 +92,11 @@ public class Pessoa implements Serializable {
         this.apartamento = apartamento;
     }
 
-    public Number isAtivo() {
+    public Integer getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Number ativo) {
+    public void setAtivo(Integer ativo) {
         this.ativo = ativo;
     }
 }

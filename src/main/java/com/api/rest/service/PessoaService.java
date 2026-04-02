@@ -7,6 +7,8 @@ import com.api.rest.service.mapper.PessoaMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class PessoaService {
@@ -23,4 +25,11 @@ public class PessoaService {
         pessoa = pessoaRepository.save(pessoa);
         return pessoaMapper.entityToDto(pessoa);
     }
+
+    @Transactional(readOnly = true)
+    public Optional<PessoaDTO> findOne(Long id) {
+        return pessoaRepository.findById(id).map(PessoaMapper::entityToDto);
+    }
+
+
 }
