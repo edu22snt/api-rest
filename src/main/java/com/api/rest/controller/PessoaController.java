@@ -2,11 +2,14 @@ package com.api.rest.controller;
 
 import com.api.rest.service.PessoaService;
 import com.api.rest.service.dto.PessoaDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,7 +32,11 @@ public class PessoaController {
     public Optional<PessoaDTO> findById(@PathVariable Long id) throws URISyntaxException {
          Optional<PessoaDTO> pessoaDTO = service.findOne(id);
         return pessoaDTO;
+    }
 
+    @GetMapping()
+    public ResponseEntity<Page<PessoaDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
 
 }
