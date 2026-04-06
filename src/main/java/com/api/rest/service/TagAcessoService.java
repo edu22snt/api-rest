@@ -48,4 +48,11 @@ public class TagAcessoService {
         log.debug("Request to delete TagAcesso by id : {}", id);
         tagAcessoRepository.deleteById(id);
     }
+
+    public TagAcessoDTO update(TagAcessoDTO tagAcessoDTO) {
+        log.debug("Request to update tagAcessoDTO: {}", tagAcessoDTO);
+        TagAcesso TagAcesso = tagAcessoMapper.dtoToEntity(tagAcessoDTO);
+        TagAcesso = tagAcessoRepository.save(TagAcesso);
+        return tagAcessoMapper.entityToDto(TagAcesso);
+    }
 }

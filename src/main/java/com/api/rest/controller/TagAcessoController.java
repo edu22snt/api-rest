@@ -44,4 +44,10 @@ public class TagAcessoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<TagAcessoDTO> update(@RequestBody TagAcessoDTO tagAcessoDTO) {
+        TagAcessoDTO result = service.update(tagAcessoDTO);
+        return ResponseEntity.ok().body(result);
+    }
+
 }
