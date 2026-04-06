@@ -1,36 +1,22 @@
-package com.api.rest.model;
+package com.api.rest.service.dto;
 
-import jakarta.persistence.*;
+import com.api.rest.model.Pessoa;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
-@Entity
-@Table(name = "TB_ACESSO")
-public class TagAcesso implements Serializable {
+public class TagAcessoDTO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CD_ACESSO")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CD_PESSOA")
     private Pessoa pessoa;
-
-    @Column(name = "NO_TAG")
     private String numTag;
-
-    @Column(name = "NU_ATIVA")
     private Integer ativa;
-
-    @Column(name = "DT_CADASTRO")
     private OffsetDateTime dataCadastro;
 
-    public TagAcesso () {
+    public TagAcessoDTO() {
     }
 
-    public TagAcesso (Long id, Pessoa pessoa, String numTag, Integer ativa, OffsetDateTime dataCadastro) {
+    public TagAcessoDTO(Long id, Pessoa pessoa, String numTag, Integer ativa, OffsetDateTime dataCadastro) {
         this.id = id;
         this.pessoa = pessoa;
         this.numTag = numTag;
