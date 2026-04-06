@@ -38,4 +38,10 @@ public class TagAcessoController {
         return ResponseEntity.ok(service.findAll(pageable));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

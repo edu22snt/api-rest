@@ -43,4 +43,9 @@ public class TagAcessoService {
         log.debug("Request to get all TagAcesso");
         return tagAcessoRepository.findAll(pageable).map(TagAcessoMapper::entityToDto);
     }
+
+    public void delete(Long id) {
+        log.debug("Request to delete TagAcesso by id : {}", id);
+        tagAcessoRepository.deleteById(id);
+    }
 }
