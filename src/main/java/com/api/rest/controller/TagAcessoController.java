@@ -2,6 +2,8 @@ package com.api.rest.controller;
 
 import com.api.rest.service.TagAcessoService;
 import com.api.rest.service.dto.TagAcessoDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,4 +32,10 @@ public class TagAcessoController {
         Optional<TagAcessoDTO> tagAcessoDTO = service.findOne(id);
         return tagAcessoDTO;
     }
+
+    @GetMapping()
+    public ResponseEntity<Page<TagAcessoDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
+    }
+
 }

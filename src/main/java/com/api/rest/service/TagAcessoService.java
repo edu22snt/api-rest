@@ -6,6 +6,8 @@ import com.api.rest.service.dto.TagAcessoDTO;
 import com.api.rest.service.mapper.TagAcessoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,5 +36,11 @@ public class TagAcessoService {
     public Optional<TagAcessoDTO> findOne(Long id) {
         log.debug("Request to get one TagAcesso by id");
         return tagAcessoRepository.findById(id).map(TagAcessoMapper::entityToDto);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<TagAcessoDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all TagAcesso");
+        return tagAcessoRepository.findAll(pageable).map(TagAcessoMapper::entityToDto);
     }
 }
