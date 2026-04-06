@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class TagAcessoService {
@@ -26,5 +28,11 @@ public class TagAcessoService {
         TagAcesso tagAcesso = tagAcessoMapper.dtoToEntity(tagAcessoDTO);
         tagAcesso = tagAcessoRepository.save(tagAcesso);
         return tagAcessoMapper.entityToDto(tagAcesso);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<TagAcessoDTO> findOne(Long id) {
+        log.debug("Request to get one TagAcesso by id");
+        return tagAcessoRepository.findById(id).map(TagAcessoMapper::entityToDto);
     }
 }
